@@ -5,13 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { createStore } from "redux";
-import counter from "./reducers";
+import rootReducer from "./reducers";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const store = createStore(counter);
+const store = createStore(rootReducer);
+
+store.dispatch({
+  type: "ADD_TODO",
+  text: "Use Redux",
+});
+
+console.log("store.getState()", store.getState());
 
 const render = () =>
   root.render(
